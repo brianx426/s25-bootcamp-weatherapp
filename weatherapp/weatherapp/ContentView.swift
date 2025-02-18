@@ -92,9 +92,13 @@ struct ContentView: View {
         times[0] = "Now"
         for i in 1..<26 {
             if times[i - 1] == "07" {
-                times[i] = "07:\(Int.random(in:0...59))"
+                let minInt = Int.random(in: 0...59)
+                let minStr = minInt < 10 ? "0\(minInt)" : "\(minInt)"
+                times[i] = "07:\(minStr)"
             } else if times[i - 1] == "18" {
-                times[i] = "18:\(Int.random(in:0...59))"
+                let minInt = Int.random(in: 0...59)
+                let minStr = minInt < 10 ? "0\(minInt)" : "\(minInt)"
+                times[i] = "18:\(minStr)"
             } else {
                 time = (time + 1) % 24
                 times[i] = time < 10 ? "0\(time)" : "\(time)"
@@ -264,7 +268,7 @@ struct ContentView: View {
     
 //    ContentView(city: "Chapel Hill", startTemp: String(Int.random(in: -18...30)), startHour: String(Int.random(in: 0...23)), startIcon: "cloud.rain.fill")
     
-//    ContentView(city: "Chapel Hill", startTemp: String(Int.random(in: -18...30)), startHour: String(Int.random(in: 0...23)), startIcon: "cloud.bolt.rain.fill")
+    ContentView(city: "Chapel Hill", startTemp: String(Int.random(in: -18...30)), startHour: String(Int.random(in: 0...23)), startIcon: "cloud.bolt.rain.fill")
     
 //    ContentView(city: "Chapel Hill", startTemp: String(Int.random(in: -18...30)), startHour: String((Int.random(in:8...18) + 12) % 24), startIcon: "moon.stars.fill")
     
