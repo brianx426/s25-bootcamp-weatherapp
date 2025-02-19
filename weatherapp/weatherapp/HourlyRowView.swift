@@ -47,21 +47,6 @@ struct HourlyRowView: View {
         .padding(.trailing)
         
     }
-    
-    func timeString(hour: Int) -> String {
-        return hour < 10 ? "0\(hour)" : "\(hour)"
-    }
-    
-    func makeTemps(base: Int) -> Array<Int> {
-        var temp = base
-        var temps = Array(repeating: 0, count: 27)
-        temps[0] = temp
-        for i in 1..<27 {
-            temp += Int.random(in: -3...3)
-            temps[i] = temp
-        }
-        return temps
-    }
 }
 
 #Preview {

@@ -57,7 +57,7 @@ struct WeeklyRowView: View {
     func makeLowTemps(min: Int, max: Int) -> Array<String> {
         var lows = Array(repeating: "", count: 10)
         for i in 1..<10 {
-            lows[i] = "\(Int.random(in: min...max))"
+            lows[i] = "\(Int.random(in: min...max - 1))"
         }
         return lows
     }

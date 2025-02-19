@@ -56,5 +56,5 @@ struct WeeklyForecastView: View {
 }
 
 #Preview {
-    WeeklyForecastView(day: "Today", weather: "moon.stars.fill", minTemp: "-3", maxTemp: "20", absMin: -10, absMax: 30)
+    WeeklyForecastView(day: "Today", weather: "moon.stars.fill", minTemp: "-3", maxTemp: "20", absMin: -30, absMax: 40)
 }

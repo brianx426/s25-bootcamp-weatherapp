@@ -47,5 +47,5 @@ struct TempBarView: View {
 }
 
 #Preview {
-    TempBarView(absMin: 0, absMax: 30, min: 4, max: 20)
+    TempBarView(absMin: -20, absMax: 40, min: 4, max: 20)
 }
