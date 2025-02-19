@@ -31,8 +31,9 @@ struct HourlyRowView: View {
                         let time = times[hour]
                         let temp = temps[hour]
                         let icon = icons[hour]
-                        let a = Int.random(in:1...105)
-                        HourlyForecastView(time: time, temp: temp, icon: icon, prec: prec.contains(icon) ? abs((a % 5) + (5 - a)) : 0)
+                        let a = Int.random(in:10...105)
+                        let precChance = prec.contains(icon) ? abs((a % 5) + (5 - a)) : 0
+                        HourlyForecastView(time: time, temp: temp, icon: icon, prec: precChance)
                     }
                 }
             }

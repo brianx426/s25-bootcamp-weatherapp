@@ -26,13 +26,11 @@ struct HourlyForecastView: View {
                 Image(systemName: icon)
                     .foregroundStyle(weatherColor1, weatherColor2)
                     .frame(width: 30, height: 30)
-//                    .border(.red, width: 1)
             } else {
                 VStack(spacing: -5) {
                     Image(systemName: icon)
                         .foregroundStyle(weatherColor1, weatherColor2)
                         .frame(width: 30, height: 30)
-//                        .border(.red, width: 1)
                     Text("\(prec)%")
                         .foregroundColor(Color("PrecipitationColor"))
                         .font(.caption)

@@ -86,9 +86,6 @@ struct ContentView: View {
     }
     
     func makeTimes(start: Int) -> Array<String> {
-        
-        print("makeTimes started")
-        
         var time = start
         var times = Array(repeating: "", count: 26)
         times[0] = "\(start < 10 ? "0\(start)" : "\(start)")"
@@ -107,16 +104,10 @@ struct ContentView: View {
             }
         }
         times[0] = "Now"
-        
-        print("makeTimes succeeded")
-        
         return times
     }
     
     func makeTemps(base: Int, times: Array<String>) -> Array<String> {
-        
-        print("makeTemps started")
-        
         var temp = base
         var temps = Array(repeating: "", count: 26)
         temps[0] = "\(temp)"
@@ -130,27 +121,17 @@ struct ContentView: View {
                 temps[i] = "\(temp)"
             }
         }
-        
-        print("makeTemps succeeded")
-        
         return temps
     }
     
     func makeIcons(icon: String, times: Array<String>, temps: Array<String>) -> Array<String> {
-        
-        print("makeIcons started")
-        
         var icons = Array(repeating: "", count: 26)
         icons[0] = icon
-        
         icons[1] = determineNextIcon(prevIcon: icons[0], hour: times[1], temp: temps[1])
         
         for i in 2..<26 {
             icons[i] = determineNextIcon(prevIcon: times[i - 1].count == 5 ? icons[i - 2] : icons[i - 1], hour: times[i], temp: temps[i])
         }
-        
-        print("makeIcons succeeded")
-        
         return icons
     }
     
@@ -206,21 +187,22 @@ struct ContentView: View {
             } else {
                 return daySafe.randomElement()!
             }
-        } else if prevIcon == "snowflake" && tempInt <= 0 {
-            let continueSnow = Int.random(in: 0...100) < 50
-            if continueSnow {
-                return "snowflake"
+        } else if prevIcon == "snowflake" {
+            if tempInt <= 2 {
+                let continueSnow = Int.random(in: 0...100) < 50
+                if continueSnow {
+                    return "snowflake"
+                } else {
+                    return ["cloud.fill", "wind"].randomElement()!
+                }
             } else {
-                return ["cloud.fill", "wind"].randomElement()!
+                return ["cloud.drizzle.fill", "cloud.rain.fill", "cloud.fill", "wind"].randomElement()!
             }
         }
         return ""
     }
     
     func findMin(from array: [String]) -> String {
-        
-        print("findMin started")
-        
         var min = Int(array[0]) ?? 30
         for i in 0..<array.count {
             if array[i] == "Sunrise" || array[i] == "Sunset" {
@@ -231,16 +213,10 @@ struct ContentView: View {
                 }
             }
         }
-        
-        print("findMin succeeded")
-        
         return String(min)
     }
     
     func findMax(from array: [String]) -> String {
-        
-        print("findMax started")
-        
         var max = Int(array[0]) ?? -18
         for i in 0..<array.count {
             if array[i] == "Sunrise" || array[i] == "Sunset" {
@@ -251,16 +227,10 @@ struct ContentView: View {
                 }
             }
         }
-        
-        print("findMax succeeded")
-        
         return String(max)
     }
     
     func iconToWeather(icon: String) -> String {
-        
-        print("iconToWeather was called")
-        
         switch icon {
         case "cloud.fill":
             return "Cloudy"
@@ -290,18 +260,15 @@ struct ContentView: View {
     }
     
     func isDay(time: String) -> Bool {
-        
-        print("isDay was called")
-        
         return Int(time)! <= 18 && Int(time)! > 7
     }
     
     func getAbsMinTemp(low: Int) -> Int {
-        return Int.random(in: min(low, -20)...max(low, -20))
+        return min(low, -20)
     }
     
     func getAbsMaxTemp(high: Int) -> Int {
-        return Int.random(in: min(high, 40)...max(high, 40))
+        return max(high, 40)
     }
 }
 
@@ -319,7 +286,7 @@ struct ContentView: View {
     
 //    ContentView(city: "Chapel Hill", startTemp: String(Int.random(in: -18...30)), startHour: String(Int.random(in:8...18)), startIcon: "sun.max.fill")
     
-    ContentView(city: "Chapel Hill", startTemp: String(Int.random(in: -18...0)), startHour: String(Int.random(in: 0...23)), startIcon: "snowflake")
+    ContentView(city: "Chapel Hill", startTemp: String(Int.random(in: -18...2)), startHour: String(Int.random(in: 0...23)), startIcon: "snowflake")
     
 //    ContentView(city: "Chapel Hill", startTemp: String(Int.random(in: -18...30)), startHour: String(Int.random(in: 0...23)), startIcon: "cloud.fill")
     

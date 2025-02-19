@@ -67,12 +67,12 @@ struct WeeklyRowView: View {
         
         for i in 1..<10 {
             let low = Int(lows[i]) ?? min
-            highs[i] = "\(Int.random(in: low...max))"
+            highs[i] = "\(Int.random(in: low  + 1...max))"
         }
         return highs
     }
 }
 
 #Preview {
-    WeeklyRowView(startDay: "Wed", lowTemp: "-5", highTemp: "9", weather: "snowflake", absMin: -6, absMax: 10)
+    WeeklyRowView(startDay: "Wed", lowTemp: "-2", highTemp: "8", weather: "snowflake", absMin: -20, absMax: 10)
 }
